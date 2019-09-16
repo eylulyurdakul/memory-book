@@ -1,0 +1,28 @@
+<div class="row">
+  {{#each allMemories}}
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          {{ creationDate }}
+          <hr>
+          <h4 class="card-title d-flex justify-content-between align-items-center">
+            {{ title }} <a href="/memories/{{id}}"><i class="fa fa-edit"></i></a>
+          </h4>
+          <p>{{ description }}</p>
+          <form action="/memories/{{id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-block btn-sm light-background" style="margin-top: 20px; border-radius: 20px">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="card mx-auto">
+      <div class="card-body">
+        <h1>Hey!</h1>
+        <p clsss="lead">You don't have any memories yet.</p>
+        <a href="/memories/new" class="btn btn-block light-background">Create One!</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
